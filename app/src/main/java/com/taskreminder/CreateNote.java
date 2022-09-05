@@ -214,7 +214,8 @@ public class CreateNote extends AppCompatActivity {
                     intent.putExtra(getString(R.string.alert_title), alertTitle);
                     intent.putExtra(getString(R.string.alert_content), alertContent);
 
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,
+                            (PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT)); // setting the mutability flag
 
                     alarmMgr.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pendingIntent);
                     cv.put(mDbHelper.TIME, timeString);
