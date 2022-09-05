@@ -6,7 +6,9 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
+
+import androidx.core.app.NotificationCompat;
+//import android.support.v4.app.NotificationCompat;
 
 /**
  * Created by dell on 12-01-2018.

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -181,7 +183,9 @@ public class CreateNote extends AppCompatActivity {
                     String alertTitle = mTitleText.getText().toString();
                     intent.putExtra(getString(R.string.alert_title), alertTitle);
 
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,
+                            (PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT) // setting the mutability flag
+                            );
 
                     alarmMgr.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pendingIntent);
                     cv.put(mDbHelper.TIME, timeString);
