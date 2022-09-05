@@ -1,5 +1,7 @@
 package com.taskreminder.helpers;
 
+import static androidx.core.app.NotificationCompat.FLAG_AUTO_CANCEL;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,7 +19,8 @@ public class NotificationHelper {
     public static void showNotification(Context context, String title, String body, Intent intent,
                                         int notificationId,
                                         String channelId,
-                                        String channelName
+                                        String channelName,
+                                        boolean autoCancelOnClick
     ) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -35,6 +38,7 @@ public class NotificationHelper {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(autoCancelOnClick) //will clear the notification on click.
                 .setContentTitle(title)
                 .setContentText(body);
 
@@ -52,7 +56,7 @@ public class NotificationHelper {
                 flags
         );
         mBuilder.setContentIntent(resultPendingIntent);
-
+        //mBuilder.getNotification().flags = FLAG_AUTO_CANCEL;
         notificationManager.notify(notificationId, mBuilder.build());
     }
 }

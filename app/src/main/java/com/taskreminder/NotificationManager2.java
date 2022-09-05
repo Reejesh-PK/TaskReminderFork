@@ -40,7 +40,8 @@ public class NotificationManager2 extends BroadcastReceiver {
                 new Intent(context,MainActivity.class),
                 MyConstants.Notification.NOTIFICATION_ID_ALARM,
                 MyConstants.Notification.NOTIFICATION_CHANNEL_ID,
-                MyConstants.Notification.NOTIFICATION_CHANNEL_Name
+                MyConstants.Notification.NOTIFICATION_CHANNEL_Name,
+                true
         );
 
     }
